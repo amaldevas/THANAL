@@ -1,0 +1,13 @@
+ALTER TABLE `days` CHANGE `number` `number` INT(10) NOT NULL;
+ALTER TABLE `staff` auto_increment = 2000;
+ALTER TABLE `staff` CHANGE `can_view_inmate_medicine_schedule` `can_view_inmate_medicine_schedule` TINYINT(1) NOT NULL DEFAULT '0';
+ALTER TABLE `staff` CHANGE `status_id` `status_id` TINYINT(10) NOT NULL DEFAULT '1';
+ALTER TABLE `inmate` CHANGE `photo_filename` `photo_filename` VARCHAR(200) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL, CHANGE `staff_notes` `staff_notes` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL;
+ALTER TABLE `inmate` ADD `gender` VARCHAR(20) NOT NULL AFTER `staff_notes`;
+ALTER TABLE `inmate` ADD `date_of_birth` DATE NOT NULL AFTER `gender`, ADD `date_of_joining` DATE NOT NULL AFTER `date_of_birth`;
+ALTER TABLE `inmate` ADD `password_hash` VARCHAR(200) NOT NULL AFTER `date_of_joining`;
+ALTER TABLE `medicines` CHANGE `medical_rep_mobile` `medical_rep_mobile` INT(20) NOT NULL;
+ALTER TABLE `guardian` CHANGE `name` `guardian_name` VARCHAR(200) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
+ALTER TABLE `guardian` auto_increment = 6000;
+ALTER TABLE `guardian` ADD `date_of_birth` DATE NOT NULL AFTER `gender`;
+ALTER TABLE `message_table` auto_increment = 7000;
